@@ -7,26 +7,24 @@
 //
 
 import Foundation
-//All enum and protocols are defined here
+//This file for all enumerations and protocols
 
-
-enum AreaAcess: String {
+//Eneumeration for Acess Areas
+enum AreaAcess: String{
     case amusementAreas
     case kitchenAreas
     case rideControlAreas
     case maintenanceAreas
     case officeAreas
-    
 }
 
-
+//Emumeratiom fpr all Types of Ride Acess
 enum RideAccess: String {
     case accessAllRides
     case skipAllRides
 }
 
-//Enum For initialization errors
-
+//Enumeration for all different types of errors
 enum InitializerError: Error {
     case missingDateOfBirth
     case missingFirstName
@@ -39,7 +37,7 @@ enum InitializerError: Error {
     
 }
 
-
+// Enumerations for all different types of Entrants
 enum EntrantType: String {
     case ClassicGuest
     case VIPGuest
@@ -62,8 +60,6 @@ protocol StaffInfo {
 
 // Protocol to make a custom type Entrant
 //Entrant is a protocol which requires all the properties
-
-
 protocol  Entrant: StaffInfo {
     
     var areaAccess: [AreaAcess] {get set }
@@ -74,14 +70,13 @@ protocol  Entrant: StaffInfo {
     var discountOnMerchandise: Int? {get set }
     
 }
-
+//Protocol for swipeTime
 protocol SwipeTime {
     var swipeTime: Date? {get set }
     
 }
 
-//Struct to hold uniform passes
-
+//Structure for the pass 
 struct Pass: Entrant, SwipeTime {
     var firstName: String?
     var lastName: String?

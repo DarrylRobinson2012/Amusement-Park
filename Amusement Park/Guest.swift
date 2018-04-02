@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Class for a generic guest
 class Guest: Entrant {
     var firstName: String?
     var lastName: String?
@@ -39,12 +40,14 @@ class Guest: Entrant {
     }
 }
 
-
+// Class for Classic guest
 class ClassicGuest: Guest {
     override init(firstName: String? = nil, lastname: String? = nil, streetAddress: String? = nil, city: String? = nil, state: String? = nil, zipCode: String? = nil, entrantType: EntrantType = .ClassicGuest, dateOfBirth: Date? = nil, discountOnFood: Int? = nil, discountOnMerchandise: Int? = nil) {
         super.init(entrantType: entrantType)
     }
 }
+
+//Class for a VIPGuest
 class VIPGuest: Guest {
     override init(firstName: String? = nil, lastname: String? = nil, streetAddress: String? = nil, city: String? = nil, state: String? = nil, zipCode: String? = nil, entrantType: EntrantType = .VIPGuest, dateOfBirth: Date? = nil, discountOnFood: Int? = nil, discountOnMerchandise: Int? = nil) {
         super.init(entrantType: entrantType)
@@ -54,6 +57,8 @@ class VIPGuest: Guest {
     }
 }
 
+//Class for child Guest
+// Each child should have a date of birth 
 class ChildGuest: Guest {
     let maxChildAge: Int = 5
     

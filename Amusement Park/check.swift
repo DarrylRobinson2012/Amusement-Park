@@ -8,11 +8,8 @@
 
 import Foundation
 
-//Class to implement the logic for checkpoint
-//Each check point generate new pass,
-// and also checks the generated pass from all other check points
-
-
+//Class for each Checkpoint
+//Each check point generate new pass, and also checks the generated pass from all other check points
 class CheckPoint {
     static let delayInSeconds: Double = 5
     static let numberOfCharacters: Int = 5 // number of characters to compare for birthday - dd..mm
