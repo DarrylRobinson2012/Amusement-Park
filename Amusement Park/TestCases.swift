@@ -11,7 +11,8 @@ import Foundation
 // By running the app, the test method will be called from ViewController,
 //and all the test cases will be excuted
 
-func test() {
+
+ func test() {
     
     //success case for VIP guest entering amusemnet areas -- allowed
         print("Test case 1 ...")
@@ -206,7 +207,7 @@ func test() {
     }
     
     
-    
+ 
     
     
     

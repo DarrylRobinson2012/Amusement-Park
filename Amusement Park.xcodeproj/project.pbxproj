@@ -13,10 +13,17 @@
 		461F650D2064A7DB00E9A8D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 461F650C2064A7DB00E9A8D0 /* Assets.xcassets */; };
 		461F65102064A7DB00E9A8D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 461F650E2064A7DB00E9A8D0 /* LaunchScreen.storyboard */; };
 		461F65182064AA7D00E9A8D0 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461F65172064AA7D00E9A8D0 /* Employee.swift */; };
+		462B2F6520C26AC000999702 /* AccessDenied.wav in Resources */ = {isa = PBXBuildFile; fileRef = 462B2F6320C26AC000999702 /* AccessDenied.wav */; };
+		462B2F6620C26AC000999702 /* AccessGranted.wav in Resources */ = {isa = PBXBuildFile; fileRef = 462B2F6420C26AC000999702 /* AccessGranted.wav */; };
 		46329859206AB71D004D44E1 /* check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46329858206AB71D004D44E1 /* check.swift */; };
 		463A4D412066F0F300AF7E0F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A4D402066F0F300AF7E0F /* Model.swift */; };
 		463A4D4320694F0A00AF7E0F /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A4D4220694F0A00AF7E0F /* Guest.swift */; };
 		4642B1E2206BEB6A00C5D96E /* TestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4642B1E1206BEB6A00C5D96E /* TestCases.swift */; };
+		4670B25E20C22BD800C6FB81 /* PassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670B25D20C22BD800C6FB81 /* PassViewController.swift */; };
+		4670B26020C22E0F00C6FB81 /* FaceImageAsset.png in Resources */ = {isa = PBXBuildFile; fileRef = 4670B25F20C22E0F00C6FB81 /* FaceImageAsset.png */; };
+		469C560420B665E90025B37F /* entryPasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C560320B665E90025B37F /* entryPasses.swift */; };
+		469C560620BEBCBD0025B37F /* vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C560520BEBCBD0025B37F /* vendor.swift */; };
+		469C560820BEC1DA0025B37F /* ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C560720BEC1DA0025B37F /* ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +35,17 @@
 		461F650F2064A7DB00E9A8D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		461F65112064A7DB00E9A8D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		461F65172064AA7D00E9A8D0 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
+		462B2F6320C26AC000999702 /* AccessDenied.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AccessDenied.wav; sourceTree = "<group>"; };
+		462B2F6420C26AC000999702 /* AccessGranted.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AccessGranted.wav; sourceTree = "<group>"; };
 		46329858206AB71D004D44E1 /* check.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = check.swift; sourceTree = "<group>"; };
 		463A4D402066F0F300AF7E0F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		463A4D4220694F0A00AF7E0F /* Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
 		4642B1E1206BEB6A00C5D96E /* TestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCases.swift; sourceTree = "<group>"; };
+		4670B25D20C22BD800C6FB81 /* PassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassViewController.swift; sourceTree = "<group>"; };
+		4670B25F20C22E0F00C6FB81 /* FaceImageAsset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FaceImageAsset.png; sourceTree = "<group>"; };
+		469C560320B665E90025B37F /* entryPasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = entryPasses.swift; sourceTree = "<group>"; };
+		469C560520BEBCBD0025B37F /* vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vendor.swift; sourceTree = "<group>"; };
+		469C560720BEC1DA0025B37F /* ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +64,8 @@
 			children = (
 				461F65042064A7DB00E9A8D0 /* Amusement Park */,
 				461F65032064A7DB00E9A8D0 /* Products */,
+				462B2F6320C26AC000999702 /* AccessDenied.wav */,
+				462B2F6420C26AC000999702 /* AccessGranted.wav */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,13 +81,18 @@
 			isa = PBXGroup;
 			children = (
 				461F65052064A7DB00E9A8D0 /* AppDelegate.swift */,
+				4670B25D20C22BD800C6FB81 /* PassViewController.swift */,
 				461F65072064A7DB00E9A8D0 /* ViewController.swift */,
 				463A4D402066F0F300AF7E0F /* Model.swift */,
+				469C560520BEBCBD0025B37F /* vendor.swift */,
+				469C560720BEC1DA0025B37F /* ext.swift */,
+				469C560320B665E90025B37F /* entryPasses.swift */,
 				4642B1E1206BEB6A00C5D96E /* TestCases.swift */,
 				463A4D4220694F0A00AF7E0F /* Guest.swift */,
 				46329858206AB71D004D44E1 /* check.swift */,
 				461F65172064AA7D00E9A8D0 /* Employee.swift */,
 				461F65092064A7DB00E9A8D0 /* Main.storyboard */,
+				4670B25F20C22E0F00C6FB81 /* FaceImageAsset.png */,
 				461F650C2064A7DB00E9A8D0 /* Assets.xcassets */,
 				461F650E2064A7DB00E9A8D0 /* LaunchScreen.storyboard */,
 				461F65112064A7DB00E9A8D0 /* Info.plist */,
@@ -140,7 +161,10 @@
 			files = (
 				461F65102064A7DB00E9A8D0 /* LaunchScreen.storyboard in Resources */,
 				461F650D2064A7DB00E9A8D0 /* Assets.xcassets in Resources */,
+				462B2F6620C26AC000999702 /* AccessGranted.wav in Resources */,
 				461F650B2064A7DB00E9A8D0 /* Main.storyboard in Resources */,
+				462B2F6520C26AC000999702 /* AccessDenied.wav in Resources */,
+				4670B26020C22E0F00C6FB81 /* FaceImageAsset.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +179,11 @@
 				463A4D4320694F0A00AF7E0F /* Guest.swift in Sources */,
 				461F65182064AA7D00E9A8D0 /* Employee.swift in Sources */,
 				461F65082064A7DB00E9A8D0 /* ViewController.swift in Sources */,
+				469C560620BEBCBD0025B37F /* vendor.swift in Sources */,
 				461F65062064A7DB00E9A8D0 /* AppDelegate.swift in Sources */,
+				4670B25E20C22BD800C6FB81 /* PassViewController.swift in Sources */,
+				469C560420B665E90025B37F /* entryPasses.swift in Sources */,
+				469C560820BEC1DA0025B37F /* ext.swift in Sources */,
 				4642B1E2206BEB6A00C5D96E /* TestCases.swift in Sources */,
 				463A4D412066F0F300AF7E0F /* Model.swift in Sources */,
 			);
@@ -295,6 +323,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B4H9U4LTML;
 				INFOPLIST_FILE = "Amusement Park/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "idk.Amusement-Park";
@@ -309,6 +338,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B4H9U4LTML;
 				INFOPLIST_FILE = "Amusement Park/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "idk.Amusement-Park";

@@ -34,6 +34,10 @@ enum InitializerError: Error {
     case missingState
     case missingZipCode
     case olderThenAgeLimit
+    case missingProjectNumber
+    case missingVendorCompany
+    case missingDateOfVisit
+    case invalidProjectNumber
     
 }
 
@@ -42,12 +46,59 @@ enum EntrantType: String {
     case ClassicGuest
     case VIPGuest
     case ChildGuest
+    case SeasonPassGuest
+    case SeniorGuest
     case FoodServiceEmployee
     case RideServiceEmployee
     case MaintenanceEmployee
+    case ContractEmployee
     case Manager
+    case Vendor
+    
 }
 
+enum VendorCompany: String {
+    case Amazon
+    case Apple
+    case Uber
+    case Telsa
+}
+
+//Enum for top buttons in first row
+enum FirstRowButtonType {
+    case Guest
+    case Employee
+    case Manager
+    case Vendor
+}
+
+//Enum for top buttons in second row
+enum SecondRowButtonType {
+    case Child
+    case Adult
+    case Senior
+    case VIP
+    case SeasonPass
+    case FoodService
+    case RideService
+    case Maintenance
+    case Contract
+    
+}
+
+protocol ContractInfo {
+    var projectNumber: Int?  { get set }
+    
+}
+protocol VendorInfo {
+    var vendorCompany: VendorCompany? {get set }
+    var dateOfVisit: Date? {get set }
+}
+
+protocol DiscountInfo {
+    var discountOnFood: Int?  { get set }
+    var discountOnMerchandise: Int? {get set }
+}
 //Protocol for Staff info
 protocol StaffInfo {
     var firstName: String? {get set }
@@ -60,7 +111,7 @@ protocol StaffInfo {
 
 // Protocol to make a custom type Entrant
 //Entrant is a protocol which requires all the properties
-protocol  Entrant: StaffInfo {
+protocol  Entrant: StaffInfo, ContractInfo, VendorInfo, DiscountInfo {
     
     var areaAccess: [AreaAcess] {get set }
     var rideAcess: [RideAccess] {get set }
@@ -78,6 +129,7 @@ protocol SwipeTime {
 
 //Structure for the pass 
 struct Pass: Entrant, SwipeTime {
+    
     var firstName: String?
     var lastName: String?
     var streetAddress: String?
@@ -91,9 +143,12 @@ struct Pass: Entrant, SwipeTime {
     var discountOnFood: Int?
     var discountOnMerchandise: Int?
     var swipeTime: Date? = nil
+    var projectNumber: Int?
+    var vendorCompany: VendorCompany?
+    var dateOfVisit: Date?
     
     
-    init(firstName: String? = nil, lastname: String? = nil, streetAdress: String? = nil, city: String? = nil, state: String? = nil, zipCode: String? = nil, entrantType: EntrantType, dateOfBirth: Date? = nil, discountOnFood: Int? = nil, discountOnMerchandise: Int? = nil) {
+    init(firstName: String? = nil, lastname: String? = nil, streetAdress: String? = nil, city: String? = nil, state: String? = nil, zipCode: String? = nil, entrantType: EntrantType, dateOfBirth: Date? = nil, discountOnFood: Int? = nil, discountOnMerchandise: Int? = nil, projectNumber: Int? = nil, vendorCompany: VendorCompany? = nil, dateOfVisit: Date? = nil ) {
         
         self.firstName = firstName
         self.lastName = lastname
@@ -105,6 +160,9 @@ struct Pass: Entrant, SwipeTime {
         self.dateOfBirth = dateOfBirth
         self.discountOnFood = discountOnFood
         self.discountOnMerchandise = discountOnMerchandise
+        self.projectNumber = projectNumber
+        self.vendorCompany = vendorCompany
+        self.dateOfVisit = dateOfVisit
     }
 }
 

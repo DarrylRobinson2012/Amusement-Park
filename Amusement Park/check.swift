@@ -53,11 +53,43 @@ class CheckPoint {
                 print(error)
             }
             
+        case .SeasonPassGuest:
+            do {
+                    //Creating an instance
+                let seasonPassGuest = try SeasonPassGuest(firstName: entrant.firstName, lastName: entrant.lastName, streetAddress: entrant.streetAddress, city: entrant.city, state: entrant.streetAddress, zipcode: entrant.zipCode)
+                // Contructing a Pass
+                var pass = Pass(firstName: seasonPassGuest.firstName, lastname: seasonPassGuest.lastName, entrantType: seasonPassGuest.entrantType, dateOfBirth: seasonPassGuest.dateOfBirth)
+                pass.rideAcess = seasonPassGuest.rideAcess
+                pass.areaAccess = seasonPassGuest.areaAccess
+                pass.discountOnFood = seasonPassGuest.discountOnFood
+                pass.discountOnMerchandise = seasonPassGuest.discountOnMerchandise
+                
+                finalPass = pass
+                
+            } catch {
+                print(error)
+            }
+        case .SeniorGuest:
+            do {
+                // Creating an instance
+                let seniorGuest = try SeniorGuest(firstName: entrant.firstName, lastName: entrant.lastName, dateOfBirth: entrant.dateOfBirth)
+                //Constructing a pass
+                var pass = Pass(firstName: seniorGuest.firstName, lastname: seniorGuest.lastName, entrantType: seniorGuest.entrantType, dateOfBirth: entrant.dateOfBirth)
+                pass.rideAcess = seniorGuest.rideAcess
+                pass.areaAccess = seniorGuest.areaAccess
+                pass.discountOnFood = seniorGuest.discountOnFood
+                pass.discountOnMerchandise = seniorGuest.discountOnMerchandise
+            
+                finalPass = pass
+            } catch {
+                print(error)
+            }
+            
             
         case .FoodServiceEmployee:
             do {
                 //Creating an instance of FoodServiceEmployee
-                let foodServiceEmployee = try FoodServiceEmployee(firstName: entrant.firstName, lastName: entrant.lastName, streetAddress: entrant.streetAddress, city: entrant.city, state: entrant.state, zipCode: entrant.zipCode, entrantType: entrant.entrantType, dateOfBirth: nil)
+                let foodServiceEmployee = try FoodServiceEmployee(firstName: entrant.firstName, lastName: entrant.lastName, streetAddress: entrant.streetAddress, city: entrant.city, state: entrant.state, zipCode: entrant.zipCode, entrantType: entrant.entrantType, dateOfBirth: entrant.dateOfBirth)
                 //Using the instance properties of foodServiceEmployee to create a pass
                 var pass = Pass(firstName: foodServiceEmployee.firstName, lastname: foodServiceEmployee.lastName, entrantType: foodServiceEmployee.entrantType)
                 pass.rideAcess = foodServiceEmployee.rideAcess
@@ -104,15 +136,44 @@ class CheckPoint {
                 } catch {
                     print(error)
             }
+            
+        case .ContractEmployee:
+            do {
+                //Creating an instance
+                let contractEmployee = try ContractEmployee(firstName: entrant.firstName, lastName: entrant.lastName, streetAddress: entrant.streetAddress, city: entrant.city, state: entrant.state, zipCode: entrant.zipCode, projectNumber: entrant.projectNumber ,dateOfBirth: entrant.dateOfBirth)
+                //Creating the pass
+                var pass = Pass(firstName: contractEmployee.firstName, lastname: contractEmployee.lastName, streetAdress: contractEmployee.streetAddress, city: contractEmployee.city, state: contractEmployee.state, zipCode: contractEmployee.zipCode, entrantType: contractEmployee.entrantType,  dateOfBirth: contractEmployee.dateOfBirth)
+                pass.rideAcess = contractEmployee.rideAcess
+                pass.areaAccess = contractEmployee.areaAccess
+                
+                finalPass = pass
+            } catch {
+                print(error)
             }
+        case .Vendor:
+            do {
+                //Creating an instance
+                let vendor = try Vendor(firstName: entrant.firstName, lastName: entrant.lastName, vendorCompany: entrant.vendorCompany, dateOfBirth: entrant.dateOfBirth, dateOfVisit: entrant.dateOfVisit)
+                
+                //creating the pass
+                var pass = Pass(firstName: vendor.firstName, lastname: vendor.lastName, entrantType: vendor.entrantType, dateOfBirth: vendor.dateOfBirth, vendorCompany: vendor.vendorCompany, dateOfVisit: vendor.dateOfVisit)
+            } catch {
+                 print(error)
+            }
+        
+            
+        }
             return finalPass
     }
+    
+    
         
         //Method to check the pass and allow entry to areas
         //Equivalent to Swipe method, This methof can handle all atyoe of passes
         
-            static func checkPassForAreaAccess(pass: inout Pass, to area: AreaAcess) {
+            static func checkPassForAreaAccess(pass: inout Pass, to area: AreaAcess) -> String {
             
+                var phrase = " "
             if pass.areaAccess.contains(area) {
                 //Extra credit, preventing swipe
                 // if pass is already swiped, pass.swipe is not nil
@@ -121,23 +182,20 @@ class CheckPoint {
                     let currentTime = Date()
                     let registeredSwipeTimePlusDelay = registeredSwipeTime.addingTimeInterval(delayInSeconds)
                     if currentTime < registeredSwipeTimePlusDelay {
-                        print("Alert: Your pass has just been swiped, Try again later ... ")
-                        print("Current Time: \(currentTime)")
-                        print("Last Swipe : \(registeredSwipeTime)")
+                        phrase = " This has just been swiped, try again later... \nCurrent Time: \(currentTime)\nLast swipe : \(registeredSwipeTime)"
         
                     } else {
                         pass.swipeTime = currentTime
-                        print("\(pass.entrantType) --- Allowed entry to \(area) at \(pass.swipeTime!)")
+                        phrase = "\(pass.entrantType) --- Allowed entry to \(area) at \(pass.swipeTime!)"
                     }
                     // if pass is not swiped yet, pass.swipe is nil
                     // current time will be assigned to pass.swipeTime and allow entry
                 } else {
                     pass.swipeTime = Date()
-                    print("Pass swiped at: \(pass.swipeTime!)")
-                    print("\(pass.entrantType) -------- Alowed entry to \(area) at \(pass.swipeTime!)")
+                    phrase = "Pass swiped at: \(pass.swipeTime!)\n\(pass.entrantType) ---Alowed entry to \(area)\n at \(pass.swipeTime!)"
                 }
                     
-                    //Extra credi, birthday message
+                    //Extra credit, birthday message
                     if pass.dateOfBirth != nil{
                     let today = Date()
                     let formatter = DateFormatter()
@@ -157,7 +215,8 @@ class CheckPoint {
                     
                 }
             } else {
-                print("\(pass.entrantType) --- Denied entry to \(area)")
+            phrase = "\(pass.entrantType) --- Denied entry to \(area)"
         }
+                return phrase
     }
 }
