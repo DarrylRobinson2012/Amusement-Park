@@ -157,6 +157,10 @@ class CheckPoint {
                 
                 //creating the pass
                 var pass = Pass(firstName: vendor.firstName, lastname: vendor.lastName, entrantType: vendor.entrantType, dateOfBirth: vendor.dateOfBirth, vendorCompany: vendor.vendorCompany, dateOfVisit: vendor.dateOfVisit)
+                pass.rideAcess = vendor.rideAcess
+                pass.areaAccess = vendor.areaAccess
+                
+                finalPass = pass
             } catch {
                  print(error)
             }

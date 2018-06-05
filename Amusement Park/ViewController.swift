@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     @IBOutlet var MainView: UIView!
     
@@ -77,7 +77,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         //observer for keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         
         //Adding Done button for all input fields(keyboard, UIPicker)
@@ -188,7 +188,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             secondRowButton = SecondRowButtonType.Adult
             setActiveTextFeilds()
         }
-        if sender.titleLabel?.text == "Ride Service" {
+        if sender.titleLabel?.text == "Ride service" {
             secondRowButton = SecondRowButtonType.RideService
             setActiveTextFeilds()
         }
@@ -274,19 +274,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, didselectRow row: Int, inComponent component: Int) {
         CompanyTextFeild.text = companyData[row]
     }
-    
-    func generatePass(_ sender: UIButton) {
-        guard let firstRowButtonUnwrapped = firstRowButton else {
-            print("Empty")
-            return
-        }
-    }
+
     
     @IBAction func genPass(_ sender: UIButton) {
         
+    
         guard let firstRowButtonUnwrapped = firstRowButton else {
             print("Empty")
-         return
+        return
     }
         switch firstRowButtonUnwrapped {
         case .Guest:
@@ -406,7 +401,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             do {
                 
                 
-                let vendor = try Vendor(firstName: firstNameLabel.text, lastName: LastNameTextFeild.text, vendorCompany: VendorCompany(rawValue: vendorCompanyUnwrapped), dateOfBirth: dateOfBirthFromString, dateOfVisit: dateOfVisitFromString)
+                let vendor = try Vendor(firstName: FirstNameTextFeild.text, lastName: LastNameTextFeild.text, vendorCompany: VendorCompany(rawValue: vendorCompanyUnwrapped), dateOfBirth: dateOfBirthFromString, dateOfVisit: dateOfVisitFromString)
                     
                     
                     
@@ -418,8 +413,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 }
             }
             
+    
+    
       
         }
+        validateAllTextFields()
+        
+      
     }
     @IBAction func  populateData(sender: UIButton) {
     guard let firstRowButtonUnwrapped = firstRowButton else {
@@ -545,8 +545,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
         case .Vendor:
             
-            FirstNameTextFeild.text = "Jack"
-            LastNameTextFeild.text = "Ma"
+            print("Vendor stuff should be in there")
+            FirstNameTextFeild.text = "Huncho"
+            LastNameTextFeild.text = "Jack"
             CompanyTextFeild.text = "Telsa"
             DOBtextfeild.text = "01-01-1960"
             SSNTextFeild.text = "01-01-2015"
@@ -624,6 +625,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func validateAllTextFields() {
+        validateTextField(textField: FirstNameTextFeild)
+        validateTextField(textField: LastNameTextFeild)
+        validateTextField(textField: ProjectTextFeild)
+        validateTextField(textField: AddyTextFeild)
+        validateTextField(textField: StateTextFeild)
+        validateTextField(textField: CityTextFeild)
+        validateTextField(textField: ZipTextFeild)
         
     }
     
@@ -643,7 +651,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     //function to add done button for all the inout fields(keyboard, UIPicker)
     func addDoneButton()  {
         // toolbar
-        let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(ViewController.dismissPicker))
+        let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(ViewController.dismissKeyboard))
         DOBtextfeild.inputAccessoryView = toolBar
         SSNTextFeild.inputAccessoryView = toolBar
         ProjectTextFeild.inputAccessoryView = toolBar

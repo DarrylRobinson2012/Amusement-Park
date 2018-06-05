@@ -67,7 +67,7 @@ class Vendor: Entrant {
             self.areaAccess = [.kitchenAreas]
         case .Apple:
             self.areaAccess = [.amusementAreas, .rideControlAreas, .kitchenAreas]
-            case .Telsa:
+        case .Telsa:
             self.areaAccess = [.maintenanceAreas, .officeAreas]
         case .Uber:
             self.areaAccess = [.amusementAreas, .rideControlAreas, .kitchenAreas, .maintenanceAreas, .officeAreas]

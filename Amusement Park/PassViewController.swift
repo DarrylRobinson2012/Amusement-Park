@@ -30,12 +30,13 @@ class PassViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         // Do any additional setup after loading the view.
         
         loadSounds()
         
-        if let firstNameUnwrapped = pass?.firstName, let lastNameUnwrapped = pass?.lastName { Name.text = "\(firstNameUnwrapped) \(lastNameUnwrapped)"
+        if let firstNameUnwrapped = pass?.firstName, let lastNameUnwrapped = pass?.lastName { Name.text =
+            "\(firstNameUnwrapped) \(lastNameUnwrapped)"
     
     }
         if let passTypeUnwrapped = pass?.entrantType {
@@ -52,11 +53,15 @@ class PassViewController: UIViewController {
         }
         
         if let discountOnFoodUnWrapped = pass?.discountOnFood {
-            FoodDiscount.text = "\(discountOnFoodUnWrapped)% Food Discount"
+            FoodDiscount.text = "Food Discount:\(discountOnFoodUnWrapped)%"
+            
+        }else {  FoodDiscount.text = "Food Discount: N/A"
+            
         }
-        
         if let discountOnMerchandiseUnwrapped = pass?.discountOnMerchandise {
-            MarchandiseDiscount.text = "\(discountOnMerchandiseUnwrapped)"
+            MarchandiseDiscount.text = "Merchandise Discoount NA: \(discountOnMerchandiseUnwrapped)%"
+        } else {
+            MarchandiseDiscount.text = "Merchandise Discount: N/A"
         }
         
     }
@@ -74,6 +79,8 @@ class PassViewController: UIViewController {
             if segue.identifier == "newPass" {
                 let vc = segue.destination as! ViewController
                 vc.pass = pass
+                
+                
             }
         }
     }
@@ -144,9 +151,10 @@ class PassViewController: UIViewController {
         
     }
     @IBAction func testDiscountAccess(_ sender: UIButton) {
-        TestResults.backgroundColor = .white
+       // TestResults.backgroundColor = .white
         if let discountOnFoodUnwrapped = pass?.discountOnFood, let discountOnMerchandiseUnwrapped = pass?.discountOnMerchandise{
-            TestResults.text = "\n\(discountOnFoodUnwrapped)% Food Discount\n\(discountOnMerchandiseUnwrapped)% Merch Discount"
+            TestResults.text = "\(discountOnFoodUnwrapped)% Food & \(discountOnMerchandiseUnwrapped)% Merchandise"
+            print(discountOnFoodUnwrapped)
             playCorrectAnswerSound()
         } else {
             TestResults.text = "No Discount!"
@@ -154,12 +162,21 @@ class PassViewController: UIViewController {
         }
     }
     
-    
-    
+    @IBAction func testShipPriveledges(_ sender: UIButton) {
+        TestResults.backgroundColor = .white
+        if pass!.rideAcess.contains(.skipAllRides) {
+            TestResults.backgroundColor = .green
+            playCorrectAnswerSound()
+            TestResults.text = "You may skip the line Enjoy!"
+        } else {
+            TestResults.backgroundColor = .red
+            playWrongAnswerSound()
+            TestResults.text = "Sorry you have to wait like the others"
+        }
     
     
 
-    
+    }
     
     
     
@@ -198,3 +215,4 @@ class PassViewController: UIViewController {
     
     
 }
+
