@@ -38,7 +38,8 @@ class CheckPoint {
             var pass = Pass(entrantType: vipGuest.entrantType)
             pass.rideAcess = vipGuest.rideAcess
             pass.areaAccess = vipGuest.areaAccess
-            
+            pass.discountOnFood = vipGuest.discountOnFood
+            pass.discountOnMerchandise = vipGuest.discountOnMerchandise
             finalPass = pass
         
         case .ChildGuest:
@@ -94,6 +95,8 @@ class CheckPoint {
                 var pass = Pass(firstName: foodServiceEmployee.firstName, lastname: foodServiceEmployee.lastName, entrantType: foodServiceEmployee.entrantType)
                 pass.rideAcess = foodServiceEmployee.rideAcess
                 pass.areaAccess = foodServiceEmployee.areaAccess
+                pass.discountOnFood = foodServiceEmployee.discountOnFood
+                pass.discountOnMerchandise = foodServiceEmployee.discountOnMerchandise
                 
                 finalPass = pass
             } catch  {
@@ -106,6 +109,8 @@ class CheckPoint {
                 
                 pass.rideAcess = rideServiceEmployee.rideAcess
                 pass.areaAccess = rideServiceEmployee.areaAccess
+                pass.discountOnFood = rideServiceEmployee.discountOnFood
+                pass.discountOnMerchandise = rideServiceEmployee.discountOnMerchandise
                 finalPass = pass
                 
             } catch {
@@ -117,6 +122,9 @@ class CheckPoint {
                 var pass = Pass(firstName: maintenanceEmployee.firstName, lastname: maintenanceEmployee.lastName, entrantType: maintenanceEmployee.entrantType)
                 pass.rideAcess = maintenanceEmployee.rideAcess
                 pass.areaAccess = maintenanceEmployee.areaAccess
+                pass.discountOnFood = maintenanceEmployee.discountOnFood
+                pass.discountOnMerchandise = maintenanceEmployee.discountOnMerchandise
+                
                 
                 finalPass = pass
                 
@@ -129,6 +137,8 @@ class CheckPoint {
                     var pass = Pass(firstName: manager.firstName, lastname: manager.lastName, entrantType: manager.entrantType)
                     pass.rideAcess = manager.rideAcess
                     pass.areaAccess = manager.areaAccess
+                    pass.discountOnFood = manager.discountOnFood
+                    pass.discountOnMerchandise = manager.discountOnMerchandise
                     
                     finalPass = pass
                     
@@ -145,7 +155,8 @@ class CheckPoint {
                 var pass = Pass(firstName: contractEmployee.firstName, lastname: contractEmployee.lastName, streetAdress: contractEmployee.streetAddress, city: contractEmployee.city, state: contractEmployee.state, zipCode: contractEmployee.zipCode, entrantType: contractEmployee.entrantType,  dateOfBirth: contractEmployee.dateOfBirth)
                 pass.rideAcess = contractEmployee.rideAcess
                 pass.areaAccess = contractEmployee.areaAccess
-                
+                pass.discountOnFood = contractEmployee.discountOnFood
+                pass.discountOnMerchandise = contractEmployee.discountOnMerchandise
                 finalPass = pass
             } catch {
                 print(error)
@@ -159,6 +170,8 @@ class CheckPoint {
                 var pass = Pass(firstName: vendor.firstName, lastname: vendor.lastName, entrantType: vendor.entrantType, dateOfBirth: vendor.dateOfBirth, vendorCompany: vendor.vendorCompany, dateOfVisit: vendor.dateOfVisit)
                 pass.rideAcess = vendor.rideAcess
                 pass.areaAccess = vendor.areaAccess
+                pass.discountOnFood = vendor.discountOnFood
+                pass.discountOnMerchandise = vendor.discountOnMerchandise
                 
                 finalPass = pass
             } catch {
